@@ -1,238 +1,237 @@
-# 🧹 Anti-Forensics Lab Setup
-### Educational Linux Anti-Forensics Training Lab (Metasploitable 2)
+#  Anti-Forensics Lab Setup
 
-> ⚠️ **Educational Use Only**
+> **A Linux Anti-Forensics Training Lab for Digital Forensics & Incident Response Education**
+
+> ⚠️ **Educational Purpose Only**
 >
-> This repository is designed **only for cybersecurity education, digital forensics training, blue-team awareness, and controlled laboratory environments**.
+> This project is intended **solely for cybersecurity education, digital forensics training, incident response exercises, and research** within isolated laboratory environments.
 >
-> All demonstrations should be performed inside an isolated virtual machine (such as **Metasploitable 2**) that you own or are explicitly authorized to test.
+> Execute these scripts only on virtual machines or systems that you own or are explicitly authorized to test.
 >
-> **Do not use these techniques on systems without authorization.**
+> **Do not use this project on production systems or unauthorized targets.**
 
 ---
 
-## 📖 Overview
+# 📖 Overview
 
-This project provides a complete anti-forensics laboratory used to demonstrate how attackers may attempt to hide evidence after compromising a Linux system, and how defenders and forensic analysts can recognize those artifacts.
+**Anti-Forensics Lab Setup** is a practical training environment designed to help students and security professionals understand how forensic artifacts are created, discovered, and removed on Linux systems.
 
-The lab intentionally creates a variety of forensic footprints and then demonstrates how they can be identified and cleaned within a controlled environment.
+The lab simulates common artifacts encountered during incident response investigations, allowing learners to practice identifying evidence, understanding attacker behavior, and restoring systems to a clean state.
 
-The purpose is to help students understand:
+This repository is ideal for:
 
-- Linux forensic artifacts
-- Incident response
-- Persistence mechanisms
-- Privilege escalation artifacts
-- Log analysis
-- Timestamp manipulation
-- User activity traces
-- Common attacker cleanup techniques
-- Detection opportunities for blue teams
+* Digital Forensics Training
+* Incident Response Labs
+* Cybersecurity Courses
+* Blue Team Exercises
+* SOC Training
+* CTF Practice
+* Security Awareness Demonstrations
 
 ---
 
-# 🖥️ Lab Environment
+# 🎯 Learning Objectives
 
-| Component | Value |
-|-----------|-------|
-| Operating System | Metasploitable 2 |
-| Platform | VMware / VirtualBox |
-| Privileges | Root |
-| Target | Local VM |
-| Purpose | Digital Forensics Training |
+After completing this lab, learners will understand how to identify and investigate:
+
+* Rogue user accounts
+* SUID privilege escalation artifacts
+* Temporary data storage
+* Hidden directories
+* Authentication log entries
+* Scheduled task persistence
+* SSH authorized keys
+* Webshells
+* Timestamp manipulation
+* Bash history artifacts
+* Linux persistence techniques
+* General forensic indicators
+
+The lab also demonstrates how systems may be restored after an investigation to prepare for additional exercises.
 
 ---
 
 # 📂 Repository Structure
 
-```
+```text
 .
 ├── recreate.sh
 ├── nuke.sh
-├── autowipe.sh
 └── README.md
 ```
 
 ---
 
-# 📚 Learning Objectives
-
-By completing this lab you will learn how investigators identify:
-
-- Rogue local accounts
-- SUID privilege escalation artifacts
-- Hidden loot storage
-- SSH persistence
-- Webshells
-- Scheduled persistence
-- Authentication log entries
-- Bash history artifacts
-- Timestamp anomalies
-- File system indicators
-
-You'll also understand how these traces may be modified or removed, and why defenders should rely on multiple sources of evidence rather than a single artifact.
-
----
-
-# 🧪 Lab Workflow
-
-The lab is divided into two major phases.
-
----
-
-## Phase 1 — Generate Forensic Artifacts
-
-This phase intentionally creates evidence that commonly appears during incident response investigations.
-
-Examples include:
-
-- Creation of additional local users
-- Privilege escalation artifacts
-- Temporary data storage
-- Authentication log activity
-- Scheduled persistence
-- SSH authorized keys
-- Webshell deployment
-- Timestamp manipulation
-- Command history generation
-
-Students can inspect the system before and after each action to understand how forensic artifacts are created.
-
----
-
-## Phase 2 — Cleanup Demonstration
-
-The second phase demonstrates how those artifacts can be removed or altered inside the lab environment.
-
-Topics include:
-
-- Removing persistence
-- Deleting temporary files
-- Removing unauthorized users
-- Clearing shell history
-- Removing webshells
-- Cleaning scheduled tasks
-- Log cleanup demonstrations
-- Final system cleanup
-
-This phase exists to help defenders understand attacker behavior and improve forensic investigation techniques.
-
----
-
 # ⚙️ Automation Scripts
 
-## recreate.sh
-
-Creates the complete lab environment automatically.
-
-Purpose:
-
-- Populate the VM with forensic artifacts
-- Prepare demonstrations
-- Reset the environment for another class
+The repository includes two automation scripts that simplify lab setup and cleanup, making it easy to repeat demonstrations during classes or workshops.
 
 ---
 
-## nuke.sh
+## 📄 recreate.sh
 
-Removes the artifacts created during the lab.
+Automatically prepares the training environment by generating the forensic artifacts used throughout the lab.
 
-Purpose:
+### Features
 
-- Reset the VM
-- Return to a clean baseline
-- Prepare for the next exercise
+* Creates demonstration user accounts
+* Creates a sample SUID binary
+* Generates sample sensitive files
+* Produces authentication log entries
+* Creates scheduled task persistence
+* Adds SSH authorized keys
+* Deploys a demonstration PHP webshell
+* Performs timestamp modification
+* Generates Bash history entries
 
----
+### Usage
 
-## autowipe.sh
-
-Demonstrates an automated cleanup mechanism inside the lab.
-
-This script is included for educational analysis of persistence and evidence removal. Students should observe how recurring cleanup tasks affect forensic investigations.
-
----
-
-# 🎯 Skills Covered
-
-- Linux Security
-- Digital Forensics
-- Incident Response
-- Threat Hunting
-- Privilege Escalation
-- Log Analysis
-- Bash Artifacts
-- Linux Persistence
-- File System Analysis
-- Timestamp Analysis
-- Blue Team Operations
-- Malware Cleanup Awareness
+```bash
+chmod +x recreate.sh
+sudo ./recreate.sh
+```
 
 ---
 
-# 👨‍💻 Intended Audience
+## 📄 nuke.sh
 
-- Cybersecurity Students
-- Digital Forensics Learners
-- SOC Analysts
-- Incident Responders
-- Blue Teams
-- CTF Players
-- Security Trainers
-- University Labs
+Removes the artifacts created during the exercise and restores the lab environment to a clean state.
 
----
+### Removes
 
-# 🔬 Suggested Exercises
+* Demonstration user accounts
+* Temporary files
+* Sample persistence mechanisms
+* SSH authorized keys
+* Webshells
+* Scheduled tasks created for the lab
+* Bash history artifacts
+* Demonstration log files
+* Additional training artifacts
 
-- Identify every artifact created during Phase 1.
-- Compare the system before and after cleanup.
-- Determine which traces remain after cleanup.
-- Correlate evidence from logs, file metadata, and user activity.
-- Discuss why relying on a single source of evidence can be misleading.
+### Usage
 
----
-
-# ⚠️ Disclaimer
-
-This repository is intended solely for:
-
-- Security education
-- Authorized laboratory exercises
-- Defensive security training
-- Digital forensics instruction
-- Research
-
-The author is **not responsible** for misuse of the information contained in this repository. Always obtain proper authorization before testing or modifying any system.
+```bash
+chmod +x nuke.sh
+sudo ./nuke.sh
+```
 
 ---
 
-# 📜 License
+# 🔄 Typical Workflow
 
-This project is released under the **MIT License**.
+```text
+Fresh Linux Lab Environment
+          │
+          ▼
+sudo ./recreate.sh
+          │
+          ▼
+Generate Training Artifacts
+          │
+          ▼
+Perform Investigation
+          │
+          ▼
+Analyze & Document Findings
+          │
+          ▼
+sudo ./nuke.sh
+          │
+          ▼
+Restore Clean Lab State
+```
 
-See the **LICENSE** file for details.
+---
+
+# 🧪 Suggested Exercises
+
+* Enumerate newly created users.
+* Identify privilege escalation artifacts.
+* Inspect temporary storage locations.
+* Detect hidden files and directories.
+* Examine authentication logs.
+* Discover persistence mechanisms.
+* Locate SSH backdoors.
+* Identify webshells.
+* Analyze timestamp inconsistencies.
+* Investigate shell history.
+* Document all findings before cleanup.
+* Compare the system before and after restoration.
+
+---
+
+# 🛠 Requirements
+
+* Linux Virtual Machine
+* Bash
+* Root privileges
+* Standard Linux utilities
+* Isolated laboratory environment
+
+---
+
+# 📚 Recommended Audience
+
+* Cybersecurity Students
+* Digital Forensics Analysts
+* SOC Analysts
+* Incident Responders
+* Blue Team Engineers
+* Security Researchers
+* Cybersecurity Instructors
+* CTF Players
+
+---
+
+# 🔒 Safety Notice
+
+This repository intentionally creates forensic artifacts for educational purposes.
+
+Always use these scripts:
+
+* Inside virtual machines
+* In isolated lab environments
+* On systems you own or are authorized to test
+
+Never execute these scripts on production or business systems.
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+Possible improvements include:
+
+* Additional forensic artifact generators
+* Detection exercises
+* Documentation enhancements
+* New Linux distributions
+* Instructor guides
+* Student lab worksheets
+
+Please open an issue or submit a pull request.
 
 ---
 
 # ⭐ Support
 
-If you found this project useful for learning Linux forensics or cybersecurity:
+If this project helped you learn Linux forensics or cybersecurity:
 
-⭐ Star the repository
-
-🍴 Fork it
-
-📢 Share it with other learners
-
----
-
-# 👤 Author
-
-**Abhinav M S**
-
-Cybersecurity Researcher
+* ⭐ Star the repository
+* 🍴 Fork the project
+* 🛠 Contribute improvements
+* 📢 Share it with the community
 
 ---
 
-> "Understanding how evidence can be altered is essential to learning how to preserve, detect, and investigate it."
+# 👨‍💻 Author
+
+## Abhinav M S
+
+**Cybersecurity Researcher**
+
+---
+
+> **"Understanding how attackers attempt to hide evidence is essential for building stronger forensic investigation and incident response skills."**
