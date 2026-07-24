@@ -233,14 +233,6 @@ If you found this project useful for learning Linux forensics or cybersecurity:
 
 Cybersecurity Researcher
 
-Specializations:
-
-- Reverse Engineering
-- Malware Analysis
-- Digital Forensics
-- Penetration Testing
-- Capture The Flag (CTF)
-
 ---
 
 > "Understanding how evidence can be altered is essential to learning how to preserve, detect, and investigate it."
